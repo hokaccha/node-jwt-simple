@@ -1,0 +1,18 @@
+{
+  "name": "jwt-simple",
+  "description": "JWT(JSON Web Token) encode and decode module",
+  "version": "0.1.0",
+  "author": "Kazuhito Hokamura <k.hokamura@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/hokaccha/node-jwt-simple.git"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "nodeunit test"
+  },
+  "engines": {"node": ">= 0.4.0"},
+  "keywords": ["jwt", "encode", "decode"],
+  "main": "./index"
+}
