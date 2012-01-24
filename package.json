@@ -8,6 +8,8 @@
     "url": "http://github.com/hokaccha/node-jwt-simple.git"
   },
   "devDependencies": {
+    "mocha": "*",
+    "expect.js": "*"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha test/*.js"
