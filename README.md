@@ -1,6 +1,6 @@
 # node-jwt-simple
 
-[JWT(JSON Web Token)](http://self-issued.info/docs/draft-jones-json-web-token.html)) encode and decode module for node.js.
+[JWT(JSON Web Token)](http://self-issued.info/docs/draft-jones-json-web-token.html) encode and decode module for node.js.
 
 JWT is used by [Google In-App Payments](http://code.google.com/intl/en/apis/inapppayments/docs/index.html).
 
