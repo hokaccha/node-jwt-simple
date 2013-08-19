@@ -14,6 +14,12 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha test/*.js"
   },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/hokaccha/node-jwt-simple/master/LICENSE"
+    }
+  ],
   "engines": {"node": ">= 0.4.0"},
   "keywords": ["jwt", "encode", "decode"],
   "main": "./index"
