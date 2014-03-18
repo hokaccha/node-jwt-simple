@@ -25,7 +25,7 @@ JWT is used by [Google In-App Payments](http://code.google.com/intl/en/apis/inap
 
 By default the algorithm to encode is `HS256`.
 
-The supported algorithms for encoding and decoding are `HS256`, `HS384`, and `HS512`.
+The supported algorithms for encoding and decoding are `HS256`, `HS384`, `HS512` and `RS256`.
 
     // encode using HS512
     jwt.encode(playload, secret, 'HS512')
