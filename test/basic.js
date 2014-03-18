@@ -1,5 +1,6 @@
 var jwt = require('../index');
 var expect = require('expect.js');
+var fs = require('fs');
 
 describe('method and property', function() {
   it('jwt has version property', function() {
@@ -41,5 +42,16 @@ describe('encode and decode', function() {
     var fn2 = jwt.decode.bind(null, token, null, true);
     expect(fn1).to.throwException();
     expect(fn2()).to.eql(obj);
+  });
+
+  it('RS256', function() {
+    var obj = { foo: 'bar' };
+    var pem = fs.readFileSync(__dirname + '/test.pem').toString('ascii');
+    var cert = fs.readFileSync(__dirname + '/test.crt').toString('ascii');
+    var alg = 'RS256';
+    var token = jwt.encode(obj, pem, alg);
+    var obj2 = jwt.decode(token, cert);
+    expect(obj2).to.eql(obj);
+    expect(jwt.decode.bind(null, token, 'invalid_key')).to.throwException();
   });
 });
