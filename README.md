@@ -8,16 +8,18 @@
 
 ## Usage
 
-    var jwt = require('jwt-simple');
-    var payload = { foo: 'bar' };
-    var secret = 'xxx';
+```javascript
+var jwt = require('jwt-simple');
+var payload = { foo: 'bar' };
+var secret = 'xxx';
 
-    // encode
-    var token = jwt.encode(payload, secret);
+// encode
+var token = jwt.encode(payload, secret);
 
-    // decode
-    var decoded = jwt.decode(token, secret);
-    console.log(decoded); //=> { foo: 'bar' }
+// decode
+var decoded = jwt.decode(token, secret);
+console.log(decoded); //=> { foo: 'bar' }
+```
 
 ### Algorithms
 
@@ -25,5 +27,7 @@ By default the algorithm to encode is `HS256`.
 
 The supported algorithms for encoding and decoding are `HS256`, `HS384`, `HS512` and `RS256`.
 
-    // encode using HS512
-    jwt.encode(payload, secret, 'HS512')
+```javascript
+// encode using HS512
+jwt.encode(payload, secret, 'HS512')
+```
