@@ -9,10 +9,12 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "expect.js": "*"
+    "expect.js": "*",
+    "browserify": "^5.12.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/*.js"
+    "test": "./node_modules/.bin/mocha test/*.js",
+    "bundle": "./node_modules/.bin/browserify index.js -s=jwt > browser.js"
   },
   "licenses": [
     {
@@ -20,7 +22,13 @@
       "url": "https://raw.github.com/hokaccha/node-jwt-simple/master/LICENSE"
     }
   ],
-  "engines": {"node": ">= 0.4.0"},
-  "keywords": ["jwt", "encode", "decode"],
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "keywords": [
+    "jwt",
+    "encode",
+    "decode"
+  ],
   "main": "./index"
 }
