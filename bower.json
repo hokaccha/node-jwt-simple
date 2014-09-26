@@ -1,0 +1,28 @@
+{
+  "name": "jwt-simple",
+  "main": "browser.js",
+  "version": "0.2.0",
+  "homepage": "http://github.com/hokaccha/node-jwt-simple.git",
+  "authors": [
+    "Kazuhito Hokamura <k.hokamura@gmail.com>"
+  ],
+  "description": "JWT(JSON Web Token) encode and decode module",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "jwt",
+    "encode",
+    "decode"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
