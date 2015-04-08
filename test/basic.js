@@ -44,6 +44,16 @@ describe('encode and decode', function() {
     expect(fn2()).to.eql(obj);
   });
 
+  it('decode token given algorithm', function() {
+    var obj = { foo: 'bar' };
+    var key = 'key';
+    var token = jwt.encode(obj, key, 'HS512');
+    var obj2 = jwt.decode(token, key, false, 'HS512');
+    expect(obj2).to.eql(obj);
+    expect(jwt.decode.bind(null, token, key, false, 'HS256')).to.throwException();
+    expect(jwt.decode.bind(null, token, 'invalid_key')).to.throwException();
+  });
+
   it('RS256', function() {
     var obj = { foo: 'bar' };
     var pem = fs.readFileSync(__dirname + '/test.pem').toString('ascii');
