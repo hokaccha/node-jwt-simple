@@ -64,4 +64,26 @@ describe('encode and decode', function() {
     expect(obj2).to.eql(obj);
     expect(jwt.decode.bind(null, token, 'invalid_key')).to.throwException();
   });
+
+  it('can add jwt header by options.header', function() {
+    var obj = { foo: 'bar' };
+    var pem = fs.readFileSync(__dirname + '/test.pem').toString('ascii');
+    var cert = fs.readFileSync(__dirname + '/test.crt').toString('ascii');
+    var alg = 'RS256';
+    var token = jwt.encode(obj, pem, alg, {header: {kid: 'keyidX'}});
+    var obj2 = jwt.decode(token, cert);
+    expect(obj2).to.eql(obj);
+
+    var jwtHeader = token.split('.')[0];
+    expect(JSON.parse(base64urlDecode(jwtHeader))).to.eql({typ:"JWT",alg:"RS256",kid:"keyidX"});
+  });
 });
+
+function base64urlDecode(str) {
+  return new Buffer(base64urlUnescape(str), 'base64').toString();
+}
+
+function base64urlUnescape(str) {
+  str += new Array(5 - str.length % 4).join('=');
+  return str.replace(/\-/g, '+').replace(/_/g, '/');
+}
