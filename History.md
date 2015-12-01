@@ -1,3 +1,7 @@
+## 0.4.0
+
+add extra jwt header function to encode #28
+
 ## 0.3.1
 
 * Check for lack of token #23
