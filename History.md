@@ -1,3 +1,7 @@
+## 0.4.1
+
+Fix version numver #32
+
 ## 0.4.0
 
 add extra jwt header function to encode #28
