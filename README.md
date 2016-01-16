@@ -21,6 +21,14 @@ var decoded = jwt.decode(token, secret);
 console.log(decoded); //=> { foo: 'bar' }
 ```
 
+### Handling errors
+
+```javascript
+if(decoded && decoded.hasOwnProperty('error')){
+	// do something
+}
+```
+
 ### Algorithms
 
 By default the algorithm to encode is `HS256`.

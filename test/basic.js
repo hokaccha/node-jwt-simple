@@ -21,8 +21,9 @@ describe('encode and decode', function() {
   });
 
   it('key is required', function() {
-    var fn = jwt.encode.bind(null, { foo: 'bar' });
-    expect(fn).to.throwException();
+    var fn = jwt.encode({ foo: 'bar' });
+    expect(fn).to.have.property('error');
+    expect(fn.error).to.have.property('message', 'Require key');
   });
 
   it('decode token', function() {
@@ -31,7 +32,10 @@ describe('encode and decode', function() {
     var token = jwt.encode(obj, key);
     var obj2 = jwt.decode(token, key);
     expect(obj2).to.eql(obj);
-    expect(jwt.decode.bind(null, token, 'invalid_key')).to.throwException();
+
+    var fn1 = jwt.decode(token, 'invalid_key');
+    expect(fn1).to.have.property('error');
+    expect(fn1.error).to.have.property('message', 'Signature verification failed');
   });
 
   it('decode no verify', function() {
@@ -50,8 +54,16 @@ describe('encode and decode', function() {
     var token = jwt.encode(obj, key, 'HS512');
     var obj2 = jwt.decode(token, key, false, 'HS512');
     expect(obj2).to.eql(obj);
-    expect(jwt.decode.bind(null, token, key, false, 'HS256')).to.throwException();
-    expect(jwt.decode.bind(null, token, 'invalid_key')).to.throwException();
+
+    var fn1 = jwt.decode(token, key, false, 'HS256');
+    var fn2 = jwt.decode(token, 'invalid_key');
+
+    expect(fn1).to.have.property('error');
+    expect(fn1.error).to.have.property('message', 'Signature verification failed');
+
+    expect(fn2).to.have.property('error');
+    expect(fn2.error).to.have.property('message', 'Signature verification failed');
+
   });
 
   it('RS256', function() {
