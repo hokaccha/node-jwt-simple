@@ -8,14 +8,21 @@
     "url": "http://github.com/hokaccha/node-jwt-simple.git"
   },
   "devDependencies": {
-    "mocha": "*",
-    "expect.js": "*"
+    "expect.js": "*",
+    "istanbul": "^0.4.2",
+    "mocha": "*"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/*.js"
+    "test": "istanbul cover _mocha test/*.js"
   },
   "license": "MIT",
-  "engines": {"node": ">= 0.4.0"},
-  "keywords": ["jwt", "encode", "decode"],
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "keywords": [
+    "jwt",
+    "encode",
+    "decode"
+  ],
   "main": "./index"
 }
