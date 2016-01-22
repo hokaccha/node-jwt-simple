@@ -33,12 +33,12 @@ describe('encode', function() {
 
   it('throw an error when the key is missing', function() {
     var fn = jwt.encode.bind(null, { foo: 'bar' });
-    expect(fn).to.throwError('Require key');
+    expect(fn).to.throwError(/Require key/);
   });
 
   it('throw en error when the specified algorithm is not supported', function() {
     var fn = jwt.encode.bind(null, { foo: 'bar' }, 'some_key', 'FooBar256');
-    expect(fn).to.throwError('Algorithm not supported');
+    expect(fn).to.throwError(/Algorithm not supported/);
   });
 });
 
@@ -54,22 +54,22 @@ describe('decode', function() {
 
   it('throw an error when no token is provided', function() {
     var fn = jwt.decode.bind(null, null, key);
-    expect(fn).to.throwError('No token supplied');
+    expect(fn).to.throwError(/No token supplied/);
   });
 
   it('throw an error when the token is not correctly formatted', function() {
     var fn = jwt.decode.bind(null, 'foo.bar', key);
-    expect(fn).to.throwError('Not enough or too many segments');
+    expect(fn).to.throwError(/Not enough or too many segments/);
   });
 
   it('throw an error when the specified algorithm is not supported', function() {
     var fn = jwt.decode.bind(null, token, key, false, 'FooBar256');
-    expect(fn).to.throwError('Algorithm not supported');
+    expect(fn).to.throwError(/Algorithm not supported/);
   });
 
   it('throw an error when the signature verification fails', function() {
     var fn = jwt.decode.bind(null, token, 'invalid_key');
-    expect(fn).to.throwError('Signature verification failed');
+    expect(fn).to.throwError(/Signature verification failed/);
   });
 
   it('do not throw any error when verification is disabled', function() {
@@ -78,7 +78,7 @@ describe('decode', function() {
     var token = jwt.encode(obj, key);
     var fn1 = jwt.decode.bind(null, token, 'invalid_key1');
     var fn2 = jwt.decode.bind(null, token, 'invalid_key2', true);
-    expect(fn1).to.throwError('Signature verification failed');
+    expect(fn1).to.throwError(/Signature verification failed/);
     expect(fn2()).to.eql(obj);
   });
 
@@ -88,7 +88,7 @@ describe('decode', function() {
     var token = jwt.encode(obj, key, 'HS512');
     var obj2 = jwt.decode(token, key, false, 'HS512');
     expect(obj2).to.eql(obj);
-    expect(jwt.decode.bind(null, token, key, false, 'HS256')).to.throwError('Signature verification failed');
+    expect(jwt.decode.bind(null, token, key, false, 'HS256')).to.throwError(/Signature verification failed/);
   });
 
   describe('RS256', function() {
@@ -116,7 +116,7 @@ describe('decode', function() {
     it('throw an error when the key is invalid', function() {
       var token = jwt.encode(obj, pem, alg);
       var obj2 = jwt.decode(token, cert);
-      expect(jwt.decode.bind(null, token, 'invalid_key')).to.throwError('Signature verification fails');
+      expect(jwt.decode.bind(null, token, 'invalid_key')).to.throwError();
     });
   });
 });
