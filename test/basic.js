@@ -72,6 +72,20 @@ describe('decode', function() {
     expect(fn).to.throwError(/Signature verification failed/);
   });
 
+  it('throw an error when the token is not yet active (optional nbf claim)', function() {
+    var nbf = (Date.now() + 1000) / 1000;
+    var token = jwt.encode({ foo: 'bar', nbf: nbf }, key);
+    var fn = jwt.decode.bind(null, token, key);
+    expect(fn).to.throwError(/Token not yet active/);
+  });
+
+  it('throw an error when the token has expired (optional exp claim)', function() {
+    var exp = (Date.now() - 1000) / 1000;
+    var token = jwt.encode({ foo: 'bar', exp: exp }, key);
+    var fn = jwt.decode.bind(null, token, key);
+    expect(fn).to.throwError(/Token expired/);
+  });
+
   it('do not throw any error when verification is disabled', function() {
     var obj = { foo: 'bar' };
     var key = 'key';
