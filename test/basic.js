@@ -6,7 +6,7 @@ var package = require('../package.json');
 
 describe('jwt', function() {
   it('jwt has `version` property', function() {
-    expect(jwt.decode).to.be.a('function');
+    expect(jwt.version).to.be.a('string');
   });
 
   it('jwt has `encode` method', function() {
@@ -36,7 +36,7 @@ describe('encode', function() {
     expect(fn).to.throwError(/Require key/);
   });
 
-  it('throw en error when the specified algorithm is not supported', function() {
+  it('throw an error when the specified algorithm is not supported', function() {
     var fn = jwt.encode.bind(null, { foo: 'bar' }, 'some_key', 'FooBar256');
     expect(fn).to.throwError(/Algorithm not supported/);
   });
