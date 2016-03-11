@@ -1,3 +1,7 @@
+## 0.5.0
+
+Add support for nbf and exp claims #38 @alexjab
+
 ## 0.4.1
 
 Fix version numver #32
