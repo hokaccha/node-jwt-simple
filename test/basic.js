@@ -40,6 +40,17 @@ describe('encode', function() {
     var fn = jwt.encode.bind(null, { foo: 'bar' }, 'some_key', 'FooBar256');
     expect(fn).to.throwError(/Algorithm not supported/);
   });
+
+  it('throw an error when payload is an empty object', function() {
+    var fn = jwt.encode.bind(null, {}, 'some_key');
+    expect(fn).to.throwError(/No payload supplied/);
+  });
+
+
+  it('throw an error when payload is an empty string', function() {
+    var fn = jwt.encode.bind(null, '', 'some_key');
+    expect(fn).to.throwError(/No payload supplied/);
+  });
 });
 
 describe('decode', function() {
