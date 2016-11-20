@@ -1,7 +1,7 @@
 {
   "name": "jwt-simple",
   "description": "JWT(JSON Web Token) encode and decode module",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "Kazuhito Hokamura <k.hokamura@gmail.com>",
   "repository": {
     "type": "git",
