@@ -11,7 +11,7 @@
 ```javascript
 var jwt = require('jwt-simple');
 var payload = { foo: 'bar' };
-var secret = 'xxx';
+var secret = Buffer.from('e49cd468ec1a29a7581285fe1a1915a379f3be5394b64d147949320c009efca6c712dda4c9968a735cf7a1a3c68d51da6d4a5700616662f8588c0b52ae5a598c', 'hex');
 
 // HS256 secrets are typically 128-bit random strings, for example hex-encoded:
 // var secret = Buffer.from('fe1a1915a379f3be5394b64d14794932', 'hex)
