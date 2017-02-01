@@ -7,6 +7,9 @@
     "type": "git",
     "url": "http://github.com/hokaccha/node-jwt-simple.git"
   },
+  "dependencies": {
+    "crypto-browserify": "^3.11.0"
+  },
   "devDependencies": {
     "expect.js": "^0.3.1",
     "istanbul": "^0.4.2",
