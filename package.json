@@ -12,6 +12,9 @@
     "istanbul": "^0.4.2",
     "mocha": "^2.3.4"
   },
+  "dependencies": {
+    "crypto": "0.0.3"
+  },
   "scripts": {
     "test": "istanbul cover _mocha test/*.js"
   },
