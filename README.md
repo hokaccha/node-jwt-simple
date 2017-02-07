@@ -42,8 +42,8 @@ Decode a Token returning the encoded Object - the `jwt.decode` function takes a 
 | --- | --- | --- |
 | token | the token previously generated | No |
 | secret | key which previously encoded the token | No |
-| noVerify | turn off verifying **ON YOUR OWN RISK** | Yes |
-| algorithm | select another algorithm. see encode for algorithm options. | Yes, but noVerify must been set |
+| noVerify | turn off verification **ON YOUR OWN RISK** | Yes |
+| algorithm | select another algorithm. see encode for algorithm options. | Yes, but noVerify must been set before |
 
 ```javascript
 var jwt = require('jwt-simple');
