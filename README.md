@@ -10,7 +10,15 @@ You may use this as an authentication-method for your API: on one route you enco
     $ npm install jwt-simple
 
 ## Usage
-### Encoding Data and Creating a new Token
+### Encoding
+Encode a Object into your token - the `jwt.encode` function takes a maximum of 3 parameters:
+
+| Name | Description | Optional? |
+| --- | --- | --- |
+| payload | the object you want to encode into the token | No |
+| secret | you secret | No |
+| algorithm | there are 4 different algorithms `HS256`, `HS384`, `HS512` and `RS256` - standard is `HS256` | Yes |
+
 ```javascript
 var jwt = require('jwt-simple');
 
@@ -21,49 +29,37 @@ var payload = { 'foo': 'bar' };
 
 //create a new token by encoding the payload object into it
 var token = jwt.encode(payload, secret);
+
+//encode using HS512
+var token = jwt.encode(payload, secret, 'HS512');
 ```
 
 
+### Decoding
+Decode a Token returning the encoded Object - the `jwt.decode` function takes a maximum of 4 parameters
 
-### Decoding the Token to the Encoded Object
+| Name | Description | Optional? |
+| --- | --- | --- |
+| token | the token previously generated | No |
+| secret | key which previously encoded the token | No |
+| noVerify | turn off verifying **ON YOUR OWN RISK** | Yes |
+| algorithm | select another algorithm. see encode for algorithm options. | Yes, but noVerify must been set |
+
 ```javascript
 var jwt = require('jwt-simple');
 var secret = Buffer.from('fe1a1915a379f3be5394b64d14794932', 'hex');
 
-var payload = jwt.decode(token, secret);
-console.log(payload); //-> { 'foo': 'bar' }
-
-```
-
-### decode params
-
-```javascript
-/*
- * jwt.decode(token, key, noVerify, algorithm)
- */
-
 // decode, by default the signature of the token is verified
 var decoded = jwt.decode(token, secret);
-console.log(decoded); //=> { foo: 'bar' }
+console.log(decoded); //-> { foo: 'bar' }
 
 // decode without verify the signature of the token,
 // be sure to KNOW WHAT ARE YOU DOING because not verify the signature
 // means you can't be sure that someone hasn't modified the token payload
 var decoded = jwt.decode(token, secret, true);
-console.log(decoded); //=> { foo: 'bar' }
+console.log(decoded); //-> { foo: 'bar' }
 
 // decode with a specific algorithm (not using the algorithm described in the token payload)
 var decoded = jwt.decode(token, secret, false, 'HS256');
-console.log(decoded); //=> { foo: 'bar' }
-```
-
-### Algorithms
-
-By default the algorithm to encode is `HS256`.
-
-The supported algorithms for encoding and decoding are `HS256`, `HS384`, `HS512` and `RS256`.
-
-```javascript
-// encode using HS512
-jwt.encode(payload, secret, 'HS512')
+console.log(decoded); //-> { foo: 'bar' }
 ```
