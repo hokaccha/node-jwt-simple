@@ -1,27 +1,38 @@
-# node-jwt-simple
+# Welcome
+Secure your application in seconds using standardised **JWT-Tokens**. [RFC 7519](https://tools.ietf.org/html/rfc7519)
 
-[JWT(JSON Web Token)](http://self-issued.info/docs/draft-jones-json-web-token.html) encode and decode module for node.js.
+[![npm version](https://badge.fury.io/js/jwt-simple.svg)](https://badge.fury.io/js/jwt-simple)
 
-## Install
+## Sample Use-Case
+You may use this as an authentication-method for your API: on one route you encode a token, storing the authenticated user (e.g. after checking password and email) in it. On all other routes you check if the token is valid - this indicates that the user once did authenticate himself successfully.
 
+## Installation
     $ npm install jwt-simple
 
 ## Usage
-
+### Encoding Data and Creating a new Token
 ```javascript
 var jwt = require('jwt-simple');
-var payload = { foo: 'bar' };
-var secret = 'xxx';
 
 // HS256 secrets are typically 128-bit random strings, for example hex-encoded:
-// var secret = Buffer.from('fe1a1915a379f3be5394b64d14794932', 'hex)
+var secret = Buffer.from('fe1a1915a379f3be5394b64d14794932', 'hex');
 
-// encode
+var payload = { 'foo': 'bar' };
+
+//create a new token by encoding the payload object into it
 var token = jwt.encode(payload, secret);
+```
 
-// decode
-var decoded = jwt.decode(token, secret);
-console.log(decoded); //=> { foo: 'bar' }
+
+
+### Decoding the Token to the Encoded Object
+```javascript
+var jwt = require('jwt-simple');
+var secret = Buffer.from('fe1a1915a379f3be5394b64d14794932', 'hex');
+
+var payload = jwt.decode(token, secret);
+console.log(payload); //-> { 'foo': 'bar' }
+
 ```
 
 ### decode params
