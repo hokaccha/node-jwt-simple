@@ -1,3 +1,7 @@
+<div align="center" style="background-color:black">
+    <img src="https://jwt.io/img/pic_logo.svg"><br><br>
+</div>
+
 # Welcome
 Secure your application in seconds using standardised **JWT-Tokens**. [RFC 7519](https://tools.ietf.org/html/rfc7519)
 
