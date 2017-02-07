@@ -1,5 +1,5 @@
-<div align="center" style="background-color:black">
-    <img src="https://jwt.io/img/pic_logo.svg"><br><br>
+<div align="center">
+    <img src="https://jwt.io/assets/logo.svg"><br><br>
 </div>
 
 # Welcome
