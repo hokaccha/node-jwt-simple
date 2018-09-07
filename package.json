@@ -24,5 +24,7 @@
     "encode",
     "decode"
   ],
-  "main": "./index"
+  "main": "./index",
+  "types": "./index.d.ts",
+  "typings": "./index.d.ts"
 }
