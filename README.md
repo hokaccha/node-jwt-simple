@@ -1,5 +1,7 @@
 # node-jwt-simple
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/prakashsellathurai/node-jwt-simple.svg)](https://greenkeeper.io/)
+
 [JWT(JSON Web Token)](http://self-issued.info/docs/draft-jones-json-web-token.html) encode and decode module for node.js.
 
 ## Install
