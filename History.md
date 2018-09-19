@@ -1,3 +1,7 @@
+## 0.5.2
+
+Add types #83
+
 ## 0.5.0
 
 Add support for nbf and exp claims #38 @alexjab
