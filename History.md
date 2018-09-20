@@ -1,3 +1,7 @@
+## 0.5.3
+
+Security fix #86
+
 ## 0.5.2
 
 Add types #83
