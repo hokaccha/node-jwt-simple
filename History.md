@@ -1,3 +1,7 @@
+## 0.5.4
+
+Excludes `coverage/` in .npmignore
+
 ## 0.5.3
 
 Security fix #86
