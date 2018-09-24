@@ -1,4 +1,4 @@
-# node-jwt-simple
+# jwt-simple
 
 [JWT(JSON Web Token)](http://self-issued.info/docs/draft-jones-json-web-token.html) encode and decode module for node.js.
 
