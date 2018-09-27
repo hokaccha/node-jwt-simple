@@ -1,3 +1,7 @@
+## 0.6.0
+
+Add client factory
+
 ## 0.5.4
 
 Excludes `coverage/` in .npmignore
