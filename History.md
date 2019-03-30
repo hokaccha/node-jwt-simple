@@ -1,3 +1,7 @@
+## 0.5.6
+
+Remove usage of deprecated Buffer constructor #89 @eliot-akira
+
 ## 0.5.4
 
 Excludes `coverage/` in .npmignore
