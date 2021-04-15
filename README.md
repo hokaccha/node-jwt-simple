@@ -28,7 +28,7 @@ console.log(decoded); //=> { foo: 'bar' }
 
 ```javascript
 /*
- * jwt.decode(token, key, noVerify, algorithm)
+ * jwt.decode(token, keyOrKeys, noVerify, algorithm)
  */
 
 // decode, by default the signature of the token is verified
@@ -43,6 +43,17 @@ console.log(decoded); //=> { foo: 'bar' }
 
 // decode with a specific algorithm (not using the algorithm described in the token payload)
 let decoded = jwt.decode(token, secret, false, 'HS256');
+console.log(decoded); //=> { foo: 'bar' }
+
+// decode when the token specifies a key id,
+// e.g. token header contains { kid: 'keyId1' }
+// and was encrypted with the key for 'secret'.
+var keys = {
+    keyId1: secret,
+    keyId2: someOtherSecret
+    //..
+}
+var decoded = jwt.decode(token, keys);
 console.log(decoded); //=> { foo: 'bar' }
 ```
 

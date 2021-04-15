@@ -132,6 +132,14 @@ describe('decode', function() {
       var obj2 = jwt.decode(token, cert);
       expect(jwt.decode.bind(null, token, 'invalid_key')).to.throwError();
     });
+
+    it('decode token when header specifies a kid', function() {
+      var token = jwt.encode(obj, pem, alg, {header: {kid: 'myKey'}});
+      var obj2 = jwt.decode(token, {myKey:cert});
+      expect(obj2).to.eql(obj);
+      expect(jwt.decode.bind(null, token, {notMyKey:cert})).to.throwError();
+      expect(jwt.decode.bind(null, token, {myKey:'invalid_key'})).to.throwError();
+    })
   });
 });
 
