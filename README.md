@@ -56,3 +56,8 @@ The supported algorithms for encoding and decoding are `HS256`, `HS384`, `HS512`
 // encode using HS512
 jwt.encode(payload, secret, 'HS512')
 ```
+
+## Example
+
+1. Tutorial - [Token-Based Authentication With Node](http://mherman.org/blog/2016/10/28/token-based-authentication-with-node)
+1. Code - [node-token-auth](https://github.com/mjhea0/node-token-auth)
