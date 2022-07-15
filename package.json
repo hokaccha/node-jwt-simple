@@ -32,5 +32,8 @@
   ],
   "main": "./index",
   "types": "./index.d.ts",
-  "typings": "./index.d.ts"
+  "typings": "./index.d.ts",
+  "dependencies": {
+    "create-hmac": "^1.1.7"
+  }
 }
