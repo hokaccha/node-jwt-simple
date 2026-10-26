@@ -72,6 +72,23 @@ describe('decode', function() {
     expect(fn).to.throwError(/Signature verification failed/);
   });
 
+  it('throw an error when the key is missing', function() {
+    var crypto = require('crypto');
+    var signingInput = token.split('.').slice(0, 2).join('.');
+    var signature = crypto.createHmac('sha256', Buffer.alloc(0)).update(signingInput).digest('base64')
+      .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+    var forged = signingInput + '.' + signature;
+    expect(jwt.decode.bind(null, forged, '')).to.throwError(/Require key/);
+    expect(jwt.decode.bind(null, forged, null)).to.throwError(/Require key/);
+    expect(jwt.decode.bind(null, forged, undefined)).to.throwError(/Require key/);
+    expect(jwt.decode.bind(null, forged, Buffer.alloc(0))).to.throwError(/Require key/);
+  });
+
+  it('throw an error when the signature length is different', function() {
+    var fn = jwt.decode.bind(null, token + 'a', key);
+    expect(fn).to.throwError(/Signature verification failed/);
+  });
+
   it('throw an error when the token is not yet active (optional nbf claim)', function() {
     var nbf = (Date.now() + 1000) / 1000;
     var token = jwt.encode({ foo: 'bar', nbf: nbf }, key);
