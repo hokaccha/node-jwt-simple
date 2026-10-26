@@ -1,3 +1,11 @@
+## 0.6.0
+
+Security fix #108
+
+- `jwt.decode` throws an error when the key is empty
+- Use constant-time comparison for HMAC signatures
+- Require Node.js >= 6.6.0
+
 ## 0.5.6
 
 Remove usage of deprecated Buffer constructor #89 @eliot-akira
