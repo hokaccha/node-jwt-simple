@@ -1,5 +1,11 @@
 # jwt-simple
 
+> [!WARNING]
+> **This project is no longer maintained.** No further updates or security fixes will be provided.
+> Please migrate to an actively maintained library such as [jose](https://github.com/panva/jose) or [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken).
+>
+> If you continue to use jwt-simple, always pass the expected algorithm to `jwt.decode` (e.g. `jwt.decode(token, key, false, 'RS256')`) instead of relying on the `alg` header of the token.
+
 [JWT(JSON Web Token)](http://self-issued.info/docs/draft-jones-json-web-token.html) encode and decode module for node.js.
 
 ## Install
