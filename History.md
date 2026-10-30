@@ -1,6 +1,6 @@
 ## 0.6.1
 
-Security fix (GHSA-vgrx-w6rg-8fqf)
+Security fix (GHSA-m22w-qfmh-7pg9)
 
 - `jwt.decode` treats X.509 certificates and other public key material as RS256 when no algorithm is specified
 
