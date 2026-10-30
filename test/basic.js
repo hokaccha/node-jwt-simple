@@ -149,6 +149,14 @@ describe('decode', function() {
       var obj2 = jwt.decode(token, cert);
       expect(jwt.decode.bind(null, token, 'invalid_key')).to.throwError();
     });
+
+    ['HS256', 'HS384', 'HS512'].forEach(function(hmacAlg) {
+      it('reject ' + hmacAlg + ' token signed with the certificate as HMAC secret', function() {
+        var token = jwt.encode(obj, cert, hmacAlg);
+        expect(jwt.decode.bind(null, token, cert)).to.throwError(/Signature verification failed/);
+        expect(jwt.decode.bind(null, token, Buffer.from(cert))).to.throwError(/Signature verification failed/);
+      });
+    });
   });
 });
 
